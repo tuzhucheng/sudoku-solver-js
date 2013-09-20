@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sudoku Solver</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+	
+	<script type = "text/javascript" src="js/sudoku-engine.js"></script>
+	<script type = "text/javascript" src="js/interface.js"></script>
+	
+  </head>
+
+  <body id="bodyid">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sudoku Solver</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Sudoku Solver</h1>
+        <p class="lead">Start entering some numbers...<br> Just hit "Solve" when finished.</p>
+		
+		<div id="mainSection" class="lead">
+		<form id="SudokuForm" name="SudokuForm" method="post" action="">
+		</form>
+		<p></p>
+
+		<form id="Buttons" name="Buttons" method="post" actions="">
+		</form>
+		</div>
+
+		<script type="text/javascript">
+
+		//Creating Grid
+		var Grid = new Array(9);
+		for (var x = 0; x < 9; x++)
+			Grid[x] = new Array(9);
+		for (var x = 0; x < 9; x++)
+		{
+			for (var y = 0; y < 9; y++)
+				Grid[x][y] = new Unit();
+		}
+
+		//Creating History Items for Guessing
+		var List = new Array();
+		var last = 0;
+		var allocated = 0; //Refers to total number of Nodes created, so after undo new Nodes don't get created when there are already allocated Nodes to save memory
+
+		var fieldID = 0;
+		generateFields();
+		generateButtons();
+
+		</script>
+		
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
